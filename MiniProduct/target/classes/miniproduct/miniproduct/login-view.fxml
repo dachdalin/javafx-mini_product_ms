@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" fx:id="login_pane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="347.0" prefWidth="511.0" style="-fx-background-radius: 5;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miniproduct.miniproduct.LoginAndRegister">
+   <children>
+      <Label alignment="CENTER" layoutX="316.0" layoutY="86.0" prefHeight="29.0" prefWidth="125.0" text="Login" textAlignment="CENTER" textFill="#0db9fd">
+         <font>
+            <Font name="JetBrains Mono Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="282.0" layoutY="124.0" prefHeight="29.0" prefWidth="193.0" text="Username :">
+         <font>
+            <Font name="JetBrains Mono Regular" size="15.0" />
+         </font></Label>
+      <Label layoutX="282.0" layoutY="191.0" prefHeight="29.0" prefWidth="193.0" text="Password :">
+         <font>
+            <Font name="JetBrains Mono Regular" size="15.0" />
+         </font></Label>
+      <Button fx:id="btn_signIn" layoutX="339.0" layoutY="263.0" mnemonicParsing="false" onMouseClicked="#btn_signIn" prefHeight="29.0" prefWidth="80.0" style="-fx-background-color: #00c6ff;" text="Sign In" textFill="WHITE" />
+      <TextField fx:id="txt_usernameF" layoutX="282.0" layoutY="154.0" prefHeight="29.0" prefWidth="193.0" promptText="Enter Username" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="355.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="243.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" proportional="false" startX="0.21766561514195581" startY="0.3943217785952594">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4454997777938843" green="0.07800000160932541" blue="0.7799999713897705" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.0784313753247261" green="0.16862745583057404" blue="0.6745098233222961" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="5.0" layoutY="144.0" prefHeight="59.0" prefWidth="233.0" text="MINI PRODUCT" textFill="WHITE">
+         <font>
+            <Font name="JetBrains Mono ExtraBold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="96.0" layoutY="187.0" prefHeight="59.0" prefWidth="147.0" text="Management" textFill="WHITE">
+         <font>
+            <Font name="JetBrains Mono ExtraBold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="117.0" fitWidth="158.0" layoutX="43.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
+      <PasswordField fx:id="txt_passwordF" layoutX="282.0" layoutY="225.0" prefHeight="29.0" prefWidth="193.0" promptText="Enter Password" />
+      <Hyperlink fx:id="btn_go_signUp" onMouseClicked="#btn_go_signUp" layoutX="418.0" layoutY="299.0" text="Sign Up" />
+      <Label layoutX="291.0" layoutY="303.0" text="New User Rigister Here?" />
+      <ImageView fitHeight="117.0" fitWidth="147.0" layoutX="41.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/minishop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="100.0" layoutX="336.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/3837171.png" />
+         </image></ImageView>
+   </children>
+</Pane>
