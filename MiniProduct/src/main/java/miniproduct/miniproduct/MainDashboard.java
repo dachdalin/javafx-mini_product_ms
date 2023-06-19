@@ -48,10 +48,8 @@ public class MainDashboard implements Initializable {
     // fields input form
     @FXML
     private TextField TxtAmount;
-
     @FXML
     private TextField TxtName;
-
     @FXML
     private TextField TxtPrice;
 
@@ -60,11 +58,9 @@ public class MainDashboard implements Initializable {
     // button action
     @FXML
     private Button Btn_Delete;
-
     @FXML
     private Button Btn_Edit;
     private Alert Alert;
-
     private ObservableList<ProductData> data;
     private Connection connect;
     @FXML
@@ -99,7 +95,6 @@ public class MainDashboard implements Initializable {
 
     @FXML
     private Label Label_Pepsi;
-
 
     public  void countCoca(){
        String sql = "SELECT COUNT(name) FROM products WHERE name = 'coca'";
@@ -255,14 +250,21 @@ public class MainDashboard implements Initializable {
         try {
             PreparedStatement ps = connect.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            ProductData productShow = null;
+            ProductData productShow = new ProductData();
             while (rs.next()){
-            productShow = new ProductData(
-                    rs.getInt("id"),
-                    rs.getString("name"),
-                    rs.getInt("qty"),
-                    rs.getInt("price"),
-                    rs.getInt("amount"));
+//            productShow = new ProductData(
+//                    rs.getInt("id"),
+//                    rs.getString("name"),
+//                    rs.getInt("qty"),
+//                    rs.getInt("price"),
+//                    rs.getInt("amount"));
+
+                productShow.setId(rs.getInt("id"));
+                productShow.setName(rs.getString("name"));
+                productShow.setQty(rs.getInt("qty"));
+                productShow.setPrice(rs.getInt("price"));
+                productShow.setAmount(rs.getInt("amount"));
+
             }
             listdata.add(productShow);
         }catch (Exception e){
@@ -297,7 +299,7 @@ public class MainDashboard implements Initializable {
     }
     // function insert data to table
     public void Btn_Insert(){
-        String sql = "INSERT INTO products(name,qty,price,amount) values(?,?,?,?)";
+        String sql = "INSERT INTO products (name,qty,price,amount) values (?,?,?,?)";
         connect = Database.conn();
         try {
             PreparedStatement ps = connect.prepareStatement(sql);
@@ -309,7 +311,7 @@ public class MainDashboard implements Initializable {
             if (ps.executeUpdate()>0){
                 Alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
                 Alert.setContentText("Insert Success");
-                Alert.show();
+                Alert.showAndWait();
                 showData();
                 clearText();
             }else{
@@ -328,7 +330,6 @@ public class MainDashboard implements Initializable {
         connect = Database.conn();
         try {
             PreparedStatement ps = connect.prepareStatement(sql);
-
             ps.executeUpdate();
             if (ps.executeUpdate()==0){
                 Alert = new Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION);
@@ -377,6 +378,13 @@ public class MainDashboard implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       // showData();
+        showData();
+        showName();
+        countCoca();
+        countDutchMilk();
+        countFanta();
+        countPepsi();
+        countUsers();
+        countSting();
     }
 }
