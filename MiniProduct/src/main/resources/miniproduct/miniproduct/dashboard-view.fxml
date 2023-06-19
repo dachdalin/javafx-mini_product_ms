@@ -47,7 +47,7 @@
                   <TableColumn fx:id="name" prefWidth="118.66670989990234" text="Name" />
                   <TableColumn fx:id="qty" prefWidth="80.00001525878906" text="Qty" />
                   <TableColumn fx:id="price" prefWidth="81.33331298828125" text="Price" />
-                  <TableColumn fx:id="amount" prefWidth="64.0" text="Amount" />
+                  <TableColumn fx:id="amount" prefWidth="85.0" text="Amount" />
                </columns>
             </TableView>
             <Button fx:id="Btn_Edit" layoutX="418.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#Btn_Edit" prefHeight="31.0" prefWidth="71.0" style="-fx-background-radius: 5; -fx-background-color: blue;" text="Edit" textFill="WHITE" />
