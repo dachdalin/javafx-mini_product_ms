@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="dashboard_form" prefHeight="447.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miniproduct.miniproduct.MainDashboard">
    <children>
-      <AnchorPane layoutY="36.0" prefHeight="413.0" prefWidth="153.0" style="-fx-background-color: #7303c0;">
+      <AnchorPane prefHeight="449.0" prefWidth="157.0" style="-fx-background-color: #7303c0;">
          <children>
             <ImageView fitHeight="71.0" fitWidth="68.0" layoutX="44.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -31,9 +31,9 @@
             <Button fx:id="Btn_View" layoutX="-1.0" layoutY="234.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="25.0" prefWidth="155.0" text="View" />
             <Hyperlink fx:id="btn_logOut" layoutX="51.0" layoutY="105.0" onMouseClicked="#btn_logOut" text="Log Out" textFill="#fffdfd" />
          </children></AnchorPane>
-      <AnchorPane prefHeight="36.0" prefWidth="658.0" style="-fx-background-color: #7303c0;">
+      <AnchorPane layoutX="155.0" prefHeight="36.0" prefWidth="503.0" style="-fx-background-color: #7303c0;">
          <children>
-            <Label layoutX="170.0" layoutY="4.0" prefHeight="25.0" prefWidth="318.0" text="Mini Product Management Dashboard" textFill="#fffcfc">
+            <Label layoutX="68.0" layoutY="5.0" prefHeight="25.0" prefWidth="318.0" text="Mini Product Management Dashboard" textFill="#fffcfc">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -47,7 +47,7 @@
                   <TableColumn fx:id="name" prefWidth="118.66670989990234" text="Name" />
                   <TableColumn fx:id="qty" prefWidth="80.00001525878906" text="Qty" />
                   <TableColumn fx:id="price" prefWidth="81.33331298828125" text="Price" />
-                  <TableColumn fx:id="amount" prefWidth="64.0" text="Amount" />
+                  <TableColumn fx:id="amount" prefWidth="85.0" text="Amount" />
                </columns>
             </TableView>
             <Button fx:id="Btn_Edit" layoutX="418.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#Btn_Edit" prefHeight="31.0" prefWidth="71.0" style="-fx-background-radius: 5; -fx-background-color: blue;" text="Edit" textFill="WHITE" />

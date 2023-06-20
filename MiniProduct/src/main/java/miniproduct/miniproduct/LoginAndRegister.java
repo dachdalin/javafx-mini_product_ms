@@ -50,27 +50,47 @@ public class LoginAndRegister implements Initializable {
     private TextField txt_username;
 
     public void btn_signUp(){
-        String sql = "INSERT INTO users(username,password,email) values(?,?,?)";
-        connect = Database.conn();
-        try {
-            PreparedStatement ps = connect.prepareStatement(sql);
-            ps.setString(1, txt_username.getText());
-            ps.setString(2, txt_password.getText());
-            ps.setString(3, txt_email.getText());
-            ps.executeUpdate();
+        if (txt_username.getText().isEmpty() || txt_password.getText().isEmpty() || txt_email.getText().isEmpty()){
+            Alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
+            Alert.setContentText("Please fill all fields");
+            Alert.showAndWait();
+        }else {
+            String sql = "INSERT INTO users(username,password,email) values(?,?,?)";
+            connect = Database.conn();
+            try {
+                String checkUsername ="SELECT username FROM users WHERE username = '" + txt_username.getText() + "'";
+                PreparedStatement check = connect.prepareStatement(checkUsername);
+                ResultSet rs = check.executeQuery();
+                if (rs.next()){
+                    Alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
+                    Alert.setContentText("Username already exist");
+                    Alert.showAndWait();
+                } else if (txt_password.getText().length() < 5) {
+                    Alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
+                    Alert.setContentText("Password must be at least 5 characters");
+                    Alert.showAndWait();
+
+                }else {
+                PreparedStatement ps = connect.prepareStatement(sql);
+                ps.setString(1, txt_username.getText());
+                ps.setString(2, txt_password.getText());
+                ps.setString(3, txt_email.getText());
+                ps.executeUpdate();
                 register_pane.getScene().getWindow().hide();
                 Alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
                 Alert.setContentText("Register Success");
                 Alert.showAndWait();
-                register_pane.setVisible(false);
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();
 
-        }catch (Exception e){
-            e.printStackTrace();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     public void btn_goLogIn() throws IOException {
@@ -96,33 +116,40 @@ public class LoginAndRegister implements Initializable {
     private TextField txt_usernameF;
 
     public void btn_signIn(){
-        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-        connect = Database.conn();
-        try {
-            PreparedStatement ps = connect.prepareStatement(sql);
-            ps.setString(1, txt_usernameF.getText());
-            ps.setString(2, txt_passwordF.getText());
-            ResultSet rs = ps.executeQuery();
-            Alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
-            Alert.setContentText("Login Success");
+        if (txt_usernameF.getText().isEmpty() || txt_passwordF.getText().isEmpty()){
+            Alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
+            Alert.setContentText("Please fill all fields");
             Alert.showAndWait();
-            login_pane.getScene().getWindow().hide();
-            if (rs.next()){
-                cdata.username = txt_usernameF.getText();
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard-view.fxml")));
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
-                dashboard_form.setVisible(true);
-            }else {
-                Alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                Alert.setContentText("Login Failed");
-                Alert.show();
-            }
+        }else {
+            String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+            connect = Database.conn();
+            try {
+                PreparedStatement ps = connect.prepareStatement(sql);
+                ps.setString(1, txt_usernameF.getText());
+                ps.setString(2, txt_passwordF.getText());
+                ResultSet rs = ps.executeQuery();
 
-        }catch (Exception e){
-            e.printStackTrace();
+                if (rs.next()){
+                    cdata.username = txt_usernameF.getText();
+                    Alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+                    Alert.setContentText("Login Success");
+                    Alert.showAndWait();
+                    login_pane.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard-view.fxml")));
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                    dashboard_form.setVisible(true);
+                }else {
+                    Alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
+                    Alert.setContentText("Wrong username or password");
+                    Alert.show();
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
     public void btn_go_signUp() throws IOException {
