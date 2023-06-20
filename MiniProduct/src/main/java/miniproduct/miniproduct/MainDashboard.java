@@ -294,22 +294,28 @@ public class MainDashboard implements Initializable {
     }
     // function insert data to table
     public void Btn_Insert(){
-        String sql = "INSERT INTO products (name,qty,price,amount) values (?,?,?,?)";
-        connect = Database.conn();
-        try {
-            PreparedStatement ps = connect.prepareStatement(sql);
-            ps.setString(1, TxtName.getText());
-            ps.setInt(2, Integer.parseInt(TxtQty.getText()));
-            ps.setInt(3, Integer.parseInt(TxtPrice.getText()));
-            ps.setInt(4, Integer.parseInt(TxtAmount.getText()));
-            ps.executeUpdate();
+        if (TxtName.getText().isEmpty() || TxtPrice.getText().isEmpty() || TxtQty.getText().isEmpty() || TxtAmount.getText().isEmpty()){
+            Alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            Alert.setContentText("Please fill all field");
+            Alert.showAndWait();
+        }else {
+            String sql = "INSERT INTO products (name,qty,price,amount) values (?,?,?,?)";
+            connect = Database.conn();
+            try {
+                PreparedStatement ps = connect.prepareStatement(sql);
+                ps.setString(1, TxtName.getText());
+                ps.setInt(2, Integer.parseInt(TxtQty.getText()));
+                ps.setInt(3, Integer.parseInt(TxtPrice.getText()));
+                ps.setInt(4, Integer.parseInt(TxtAmount.getText()));
+                ps.executeUpdate();
                 Alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
                 Alert.setContentText("Insert Success");
                 Alert.showAndWait();
                 showData();
                 clearText();
-        }catch (Exception e){
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     // function delete data from table

@@ -83,6 +83,7 @@ public class LoginAndRegister implements Initializable {
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
+                stage.setTitle("Form Login");
                 stage.setScene(scene);
                 stage.show();
 
@@ -97,6 +98,7 @@ public class LoginAndRegister implements Initializable {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
+        stage.setTitle("Form Login");
         stage.setScene(scene);
         stage.show();
         register_pane.getScene().getWindow().hide();
@@ -138,6 +140,7 @@ public class LoginAndRegister implements Initializable {
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard-view.fxml")));
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
+                    stage.setTitle("Mini Product Management");
                     stage.setScene(scene);
                     stage.show();
                     dashboard_form.setVisible(true);
@@ -156,6 +159,7 @@ public class LoginAndRegister implements Initializable {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-view.fxml")));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
+        stage.setTitle("Form Register");
         stage.setScene(scene);
         stage.show();
         login_pane.getScene().getWindow().hide();
