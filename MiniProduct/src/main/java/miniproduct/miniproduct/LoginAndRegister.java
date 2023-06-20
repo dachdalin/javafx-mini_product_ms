@@ -59,7 +59,6 @@ public class LoginAndRegister implements Initializable {
             ps.setString(3, txt_email.getText());
             ps.executeUpdate();
                 register_pane.getScene().getWindow().hide();
-            if (ps.executeUpdate()>0){
                 Alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
                 Alert.setContentText("Register Success");
                 Alert.showAndWait();
@@ -70,11 +69,6 @@ public class LoginAndRegister implements Initializable {
                 stage.setScene(scene);
                 stage.show();
 
-            }else {
-                Alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                Alert.setContentText("Register Failed");
-                Alert.show();
-            }
         }catch (Exception e){
             e.printStackTrace();
         }

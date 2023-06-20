@@ -250,23 +250,18 @@ public class MainDashboard implements Initializable {
         try {
             PreparedStatement ps = connect.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            ProductData productShow = new ProductData();
+            ProductData productShow;
             while (rs.next()){
-//            productShow = new ProductData(
-//                    rs.getInt("id"),
-//                    rs.getString("name"),
-//                    rs.getInt("qty"),
-//                    rs.getInt("price"),
-//                    rs.getInt("amount"));
+            productShow = new ProductData(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("qty"),
+                    rs.getInt("price"),
+                    rs.getInt("amount"));
 
-                productShow.setId(rs.getInt("id"));
-                productShow.setName(rs.getString("name"));
-                productShow.setQty(rs.getInt("qty"));
-                productShow.setPrice(rs.getInt("price"));
-                productShow.setAmount(rs.getInt("amount"));
-
+                listdata.add(productShow);
             }
-            listdata.add(productShow);
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -308,18 +303,11 @@ public class MainDashboard implements Initializable {
             ps.setInt(3, Integer.parseInt(TxtPrice.getText()));
             ps.setInt(4, Integer.parseInt(TxtAmount.getText()));
             ps.executeUpdate();
-            if (ps.executeUpdate()>0){
                 Alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
                 Alert.setContentText("Insert Success");
                 Alert.showAndWait();
                 showData();
                 clearText();
-            }else{
-                Alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                Alert.setContentText("Insert Failed");
-                Alert.show();
-
-            }
         }catch (Exception e){
             e.printStackTrace();
         }
