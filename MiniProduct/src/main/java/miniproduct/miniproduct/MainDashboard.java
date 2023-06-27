@@ -205,14 +205,7 @@ public class MainDashboard implements Initializable {
         if (event.getSource() == Btn_Home){
            dashboard_total.setVisible(true);
            dashboard_view.setVisible(false);
-           showName();
-           countCoca();
-           countSting();
-           countDutchMilk();
-           countFanta();
-           countFruitJuice();
-           countPepsi();
-           countUsers();
+
 
         }else if (event.getSource() == Btn_View){
             dashboard_total.setVisible(false);
@@ -327,7 +320,7 @@ public class MainDashboard implements Initializable {
             ps.executeUpdate();
             if (ps.executeUpdate()==0){
                 Alert = new Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION);
-                Alert.setContentText("Delete Success");
+                Alert.setContentText("Do you Want To Delete?");
                 Alert.showAndWait();
                 showData();
                 clearText();

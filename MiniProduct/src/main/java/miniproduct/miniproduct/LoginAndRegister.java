@@ -133,9 +133,7 @@ public class LoginAndRegister implements Initializable {
 
                 if (rs.next()){
                     cdata.username = txt_usernameF.getText();
-                    Alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
-                    Alert.setContentText("Login Success");
-                    Alert.showAndWait();
+
                     login_pane.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard-view.fxml")));
                     Scene scene = new Scene(root);
